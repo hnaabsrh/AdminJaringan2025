@@ -122,7 +122,6 @@ Setelah transfer data selesai, koneksi ditutup untuk membebaskan sumber daya. Pr
 <br>
 <br>
 <br>
-
 ## Referensi
 
 - [Geeks for Geeks - Transmission Control Protocol](https://www.geeksforgeeks.org/benefits-of-multithreading-in-operating-system/)
