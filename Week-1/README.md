@@ -77,7 +77,28 @@ Dengan demikian, diperlukan waktu sekitar 0,891281 detik untuk menyelesaikan sat
 <br>
 <br>
 <br>
-## Deskripsi gambar pada slide
+## Deskripsi gambar pada slide 
+<br>
+![App Screenshot](Assets/no6.png)<br>
+
+Gambar di atas berjudul *Types of Data Deliveries* dan menjelaskan bagaimana data dikirim dari satu perangkat ke perangkat lain melalui jaringan. Ada tiga jenis pengiriman data yang ditunjukkan berdasarkan lapisan dalam model OSI:
+
+1. **Node to Node (Data Link Layer)**  
+   - Ini adalah komunikasi antara perangkat yang terhubung secara fisik, seperti antara komputer dan router, atau antar-router.  
+   - Setiap segmen komunikasi di jaringan ditangani oleh lapisan data link, yang memastikan frame data dikirim dengan benar dari satu node ke node berikutnya.  
+   - Dalam gambar, jalur *Node to Node* digambarkan dengan koneksi pendek antara setiap perangkat jaringan (router).
+
+2. **Host to Host (Network Layer)**  
+   - Ini mencakup komunikasi antara dua perangkat ujung (end-to-end), seperti dari komputer pengirim ke komputer penerima melalui jaringan internet.  
+   - Lapisan network bertanggung jawab untuk mengirimkan paket data melalui beberapa node di sepanjang jalur komunikasi.  
+   - Pada gambar, *Host to Host* mencakup keseluruhan koneksi dari komputer pengirim ke komputer penerima.
+
+3. **Process to Process (Transport Layer)**  
+   - Jenis pengiriman ini terjadi di lapisan transport, di mana data dikirim langsung dari proses aplikasi di satu host ke proses aplikasi di host lain.  
+   - Contohnya adalah pengiriman file dari aplikasi di satu komputer ke aplikasi di komputer lain melalui protokol seperti TCP atau UDP.  
+   - Jalur *Process to Process* dalam gambar ditunjukkan sebagai koneksi logis yang melintasi seluruh jalur komunikasi.
+
+Diagram ini juga menampilkan router sebagai node perantara dalam jaringan internet. Setiap router bertanggung jawab meneruskan paket data ke tujuan akhir melalui jalur terbaik.
 
 
 ## Rangkuman tahapan komunikasi menggunakan TCP
