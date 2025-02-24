@@ -32,32 +32,51 @@ Informatika Dan Komputer<br>Program Studi Teknik Informatika<br>2024/2025</h3>
 Berapa versi HTTP yang digunakan?
 
 **Jawaban:**
-
-
+![App Screenshot](Assets/no1.png)<br><br>
+Dari hasil Follow TCP Stream, terlihat bahwa request dan response yang digunakan mengikuti protokol HTTP versi 1.1. Ini menunjukkan bahwa komunikasi antara client dan server berlangsung menggunakan HTTP/1.1.
+<br>
+<br>
+<br>
 ### Soal 2
 
 **Pertanyaan:**
 Berapa IP address dari client maupun server?
 
-**Jawaban:**
-
-
+**Jawaban:**<br>
+![App Screenshot](Assets/no2.png)<br>
+![App Screenshot](Assets/no22.png)<br><br>
+Alamat IP yang digunakan oleh HTTP Client adalah **145.254.160.237**, sedangkan HTTP Server memiliki alamat IP **65.208.228.223**. Koneksi antara keduanya memungkinkan pertukaran data melalui protokol HTTP untuk keperluan pengiriman dan penerimaan informasi.
+<br>
+<br>
+<br>
 ### Soal 3
 
 **Pertanyaan:**
 Berapa waktu dari client mengirimkan HTTP request?
 
-**Jawaban:**
-
-
+**Jawaban:**<br>
+![App Screenshot](Assets/no3.png)<br><br>
+Permintaan HTTP dari client dikirimkan pada waktu 0,911310 detik. Proses ini menandai awal komunikasi antara client dan server dalam pertukaran data.
+<br>
+<br>
+<br>
 ### Soal 4
 
 **Pertanyaan:**
 Berapa Waktu dari server mengirimkan server? dan berapa durasinya?
 
-**Jawaban:**
+**Jawaban:**<br>
+![App Screenshot](Assets/no4.png)<br>
+![App Screenshot](Assets/no5.png)<br><br>
+Proses pengiriman data dari client ke server dapat diketahui dengan menghitung selisih antara waktu pengiriman HTTP request oleh client dan waktu pengiriman respons oleh server. Berdasarkan data yang diperoleh, server mengirimkan respons pada detik ke 3,955688, sedangkan client mengirimkan request pada detik ke 4,846969. 
 
+Selisih waktu tersebut dapat dihitung sebagai berikut:  
+4,846969 - 3,955688 = 0,891281  
 
+Dengan demikian, diperlukan waktu sekitar 0,891281 detik untuk menyelesaikan satu siklus pengiriman dan penerimaan data dalam bentuk HTTP Response. Durasi ini mencerminkan efisiensi komunikasi antara client dan server, yang dapat bervariasi tergantung pada kondisi jaringan dan performa server.
+<br>
+<br>
+<br>
 ## Deskripsi gambar pada slide
 
 
