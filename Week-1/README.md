@@ -33,7 +33,7 @@ Berapa versi HTTP yang digunakan?
 
 **Jawaban:** <br>
 ![App Screenshot](Assets/no1.png)<br>
-Dari hasil Follow TCP Stream, terlihat bahwa request dan response yang digunakan mengikuti protokol HTTP versi 1.1. Ini menunjukkan bahwa komunikasi antara client dan server berlangsung menggunakan HTTP/1.1.
+&nbsp;&nbsp; Dari hasil Follow TCP Stream, terlihat bahwa request dan response yang digunakan mengikuti protokol HTTP versi 1.1. Ini menunjukkan bahwa komunikasi antara client dan server berlangsung menggunakan HTTP/1.1.
 <br>
 <br>
 <br>
@@ -45,7 +45,7 @@ Berapa IP address dari client maupun server?
 **Jawaban:** <br>
 ![App Screenshot](Assets/no2.png)<br>
 ![App Screenshot](Assets/no22.png)<br><br>
-Alamat IP yang digunakan oleh HTTP Client adalah **145.254.160.237**, sedangkan HTTP Server memiliki alamat IP **65.208.228.223**. Koneksi antara keduanya memungkinkan pertukaran data melalui protokol HTTP untuk keperluan pengiriman dan penerimaan informasi.
+&nbsp;&nbsp; Alamat IP yang digunakan oleh HTTP Client adalah **145.254.160.237**, sedangkan HTTP Server memiliki alamat IP **65.208.228.223**. Koneksi antara keduanya memungkinkan pertukaran data melalui protokol HTTP untuk keperluan pengiriman dan penerimaan informasi.
 <br>
 <br>
 <br>
@@ -56,7 +56,7 @@ Berapa waktu dari client mengirimkan HTTP request?
 
 **Jawaban:** <br>
 ![App Screenshot](Assets/no3.png)<br><br>
-Permintaan HTTP dari client dikirimkan pada waktu 0,911310 detik. Proses ini menandai awal komunikasi antara client dan server dalam pertukaran data.
+&nbsp;&nbsp; Permintaan HTTP dari client dikirimkan pada waktu 0,911310 detik. Proses ini menandai awal komunikasi antara client dan server dalam pertukaran data.
 <br>
 <br>
 <br>
@@ -68,19 +68,19 @@ Berapa Waktu dari server mengirimkan server? dan berapa durasinya?
 **Jawaban:** <br>
 ![App Screenshot](Assets/no4.png)<br>
 ![App Screenshot](Assets/no5.png)<br><br>
-Proses pengiriman data dari client ke server dapat diketahui dengan menghitung selisih antara waktu pengiriman HTTP request oleh client dan waktu pengiriman respons oleh server. Berdasarkan data yang diperoleh, server mengirimkan respons pada detik ke 3,955688, sedangkan client mengirimkan request pada detik ke 4,846969. 
+&nbsp;&nbsp; Proses pengiriman data dari client ke server dapat diketahui dengan menghitung selisih antara waktu pengiriman HTTP request oleh client dan waktu pengiriman respons oleh server. Berdasarkan data yang diperoleh, server mengirimkan respons pada detik ke 3,955688, sedangkan client mengirimkan request pada detik ke 4,846969. 
 
 Selisih waktu tersebut dapat dihitung sebagai berikut:  
 4,846969 - 3,955688 = 0,891281  
 
-Dengan demikian, diperlukan waktu sekitar 0,891281 detik untuk menyelesaikan satu siklus pengiriman dan penerimaan data dalam bentuk HTTP Response. Durasi ini mencerminkan efisiensi komunikasi antara client dan server, yang dapat bervariasi tergantung pada kondisi jaringan dan performa server.
+&nbsp;&nbsp; Dengan demikian, diperlukan waktu sekitar 0,891281 detik untuk menyelesaikan satu siklus pengiriman dan penerimaan data dalam bentuk HTTP Response. Durasi ini mencerminkan efisiensi komunikasi antara client dan server, yang dapat bervariasi tergantung pada kondisi jaringan dan performa server.
 <br>
 <br>
 <br>
 ## Deskripsi gambar pada slide 
 ![App Screenshot](Assets/no6.png)<br>
 
-Gambar di atas adalah *Types of Data Deliveries* dan menjelaskan bagaimana data dikirim dari satu perangkat ke perangkat lain melalui jaringan. Ada tiga jenis pengiriman data yang ditunjukkan berdasarkan lapisan dalam model OSI:
+&nbsp;&nbsp; Gambar di atas adalah *Types of Data Deliveries* dan menjelaskan bagaimana data dikirim dari satu perangkat ke perangkat lain melalui jaringan. Ada tiga jenis pengiriman data yang ditunjukkan berdasarkan lapisan dalam model OSI:
 
 1. **Node to Node (Data Link Layer)**  
    - Ini adalah komunikasi antara perangkat yang terhubung secara fisik, seperti antara komputer dan router, atau antar-router.  
@@ -101,7 +101,7 @@ Gambar di atas adalah *Types of Data Deliveries* dan menjelaskan bagaimana data 
 <br>
 
 ## Rangkuman tahapan komunikasi menggunakan TCP
-Transmission Control Protocol (TCP) adalah protokol komunikasi yang memastikan pengiriman data yang andal antara perangkat dalam jaringan. Proses komunikasi menggunakan TCP terdiri dari tiga tahapan utama:
+&nbsp;&nbsp; Transmission Control Protocol (TCP) adalah protokol komunikasi yang memastikan pengiriman data yang andal antara perangkat dalam jaringan. Proses komunikasi menggunakan TCP terdiri dari tiga tahapan utama:
 
 ### 1. Pembentukan Koneksi (Connection Establishment)
 Tahap ini dikenal sebagai three-way handshake, yang melibatkan langkah-langkah berikut:
