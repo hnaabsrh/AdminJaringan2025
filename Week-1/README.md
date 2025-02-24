@@ -7,7 +7,8 @@
     <img src="Assets/Logo_PENS.png" alt="Logo PENS">
     <h3 style="text-align: center;">Disusun Oleh : </h3>
     <p style="text-align: center;">
-        <strong>Roihanah Inayati Bashiroh (3123500005)</strong><br>
+        <strong>Roihanah Inayati Bashiroh</strong><br>
+        <strong>3123500005 / 2 D3 IT A</strong><br>
     </p>
 
 <h3>Politeknik Elektronika Negeri Surabaya<br>Departemen Teknik
