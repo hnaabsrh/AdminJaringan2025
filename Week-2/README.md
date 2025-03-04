@@ -1,5 +1,5 @@
 <div align="center">
-    <h1 style="text-align: center;font-weight: bold">Tugas Instalasi Debian dan Rangkuman Chapter 4-6<br><br>
+    <h1 style="text-align: center;font-weight: bold">Tugas Instalasi Debian dan <br> Rangkuman Chapter 4-6<br><br>
     Workshop Administrasi Jaringan</h1>
     <h4 style="text-align: center;">Dosen Pengampu : Dr. Ferry Astika Saputra, S.T., M.Sc.</h4>
 </div>
