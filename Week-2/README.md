@@ -20,7 +20,7 @@ Informatika Dan Komputer<br>Program Studi Teknik Informatika<br>2024/2025</h3>
 
 ### Daftar Isi
 
-- [Install Debian di Computer Lab](install-debian-di-computer-lab.md)
-- [Chapter 4: Process Control](chapter-4-process-control.md)
-- [Chapter 5: The Filesystem](chapter-5-the-filesystem.md)
-- [Chapter 6: Software Installation and Management](chapter-6-software-installation-and-management.md)
+- [Install Debian di Computer Lab](InstallDebiandiComputerLab/README.md)
+- [Chapter 4: Process Control](Chapter4ProcessControl/README.md)
+- [Chapter 5: The Filesystem](Chapter5TheFilesystem/README.md)
+- [Chapter 6: Software Installation and Management](Chapter6SoftwareInstallationandManagement/README.md)
