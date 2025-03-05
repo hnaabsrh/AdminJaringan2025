@@ -36,12 +36,10 @@ Informatika Dan Komputer<br>Program Studi Teknik Informatika<br>2024/2025</h3>
 - [The /proc filesystem](#the-proc-filesystem)
 - [Strace and truss](#strace-and-truss)
 - [Runaway processes](#runaway-processes)
-- [Periodic processes](#periodic-processes)
 - [cron: schedule command](#cron-schedule-command)
 - [Format of crontab](#format-of-crontab)
 - [Systemd timer](#systemd-timer)
 - [Common use for scheduled tasks](#common-use-for-scheduled-tasks)
-- [Kesimpulan](#kesimpulan)
 <br>
 <br>
 
@@ -140,3 +138,196 @@ kill [-signal] pid
   pkill -u abdoufermat
   ```
   (Menghentikan semua proses milik pengguna **abdoufermat**).
+<br>
+<br>
+<br>
+
+### PS: Monitoring Processes
+&nbsp;&nbsp; Perintah **ps** digunakan oleh administrator sistem untuk memantau proses yang berjalan di sistem operasi. Perintah ini menampilkan informasi seperti PID (Process ID), UID (User ID), prioritas, terminal kontrol, penggunaan memori, waktu penggunaan CPU, dan status proses (berjalan, berhenti, tidur, dll).  
+
+Dengan menjalankan perintah **ps aux**, pengguna bisa melihat:  
+- **a**: Menampilkan semua proses dari semua pengguna  
+- **u**: Memberikan informasi detail tentang proses  
+- **x**: Menampilkan proses yang tidak terkait dengan terminal
+<br>  
+
+![App Screenshot](Assets/no2.png)<br>
+&nbsp;&nbsp; Perintah `ps lax` digunakan untuk menampilkan informasi teknis tentang proses yang sedang berjalan. Perintah ini lebih cepat dibandingkan `ps aux` karena tidak perlu menerjemahkan nama user dan grup.  
+
+Keterangan kolom pada output:  
+- **F**: Flag proses  
+- **UID**: ID user  
+- **PID**: ID proses  
+- **PPID**: ID proses induk  
+- **PRI**: Prioritas proses  
+- **NI**: Nice value  
+- **VSZ**: Memori virtual yang digunakan  
+- **RSS**: Memori fisik yang digunakan  
+- **STAT**: Status proses  
+- **TTY**: Terminal yang digunakan  
+- **TIME**: Waktu CPU yang digunakan  
+- **COMMAND**: Perintah yang dijalankan  
+
+Untuk mencari proses tertentu, gunakan perintah:  
+```bash
+ps aux | grep firefox
+```  
+Agar hasil pencarian tidak menampilkan baris `grep` itu sendiri, tambahkan opsi `-v`:  
+```bash
+ps aux | grep -v grep | grep firefox
+```  
+
+PID (Process ID) dapat ditemukan dengan perintah:  
+- `pgrep firefox`  
+- `pidof /usr/bin/firefox`
+<br>
+<br>
+<br>
+
+### Interactive monitoring with top
+&nbsp;&nbsp; Perintah **top** menampilkan informasi sistem secara real-time, termasuk ringkasan sistem dan daftar proses yang sedang berjalan di Linux. Tampilan ini bisa dikonfigurasi sesuai kebutuhan pengguna dan disimpan untuk digunakan kembali. Secara default, pembaruan data terjadi setiap 1-2 detik.
+
+&nbsp;&nbsp; Selain itu, ada perintah **htop** yang memiliki fungsi serupa namun dengan antarmuka yang lebih interaktif. **htop** memungkinkan pengguna menggulir secara vertikal dan horizontal untuk melihat semua proses beserta perintah lengkapnya, serta menawarkan lebih banyak opsi operasi.
+<br>
+<br>
+<br>
+
+### Nice and renice: changing process priority
+Nice dan Renice digunakan untuk mengatur prioritas proses pada sistem operasi.  
+
+- **Nice** digunakan untuk memulai proses dengan tingkat prioritas tertentu. Nilai nice berkisar dari **-20 hingga +19** di Linux (semakin rendah nilainya, semakin tinggi prioritasnya).  
+  **Sintaks:** `nice -n [nilai_nice] [perintah]`  
+  Contoh: `nice -n 10 sh infinite.sh &`  
+
+- **Renice** digunakan untuk mengubah prioritas proses yang sudah berjalan berdasarkan **PID (Process ID)**.  
+  **Sintaks:** `renice -n [nilai_nice] -p [pid]`  
+  Contoh: `renice -n 10 -p 1234`  
+
+Prioritas proses dihitung dengan rumus:  
+`priority_value = 20 + nice_value`  
+Semakin kecil nilai nice, semakin tinggi prioritas proses tersebut.  
+
+Secara default, nice value = **0**. Proses dengan prioritas tinggi mendapat waktu CPU lebih banyak dibandingkan proses prioritas rendah.
+<br>
+<br>
+<br>
+
+### The /proc filesystem
+&nbsp;&nbsp; Direktori **/proc** pada Linux adalah *pseudo-filesystem* yang digunakan oleh kernel untuk menampilkan informasi tentang status sistem. Selain informasi proses, direktori ini juga berisi data statistik sistem.  
+
+&nbsp;&nbsp; Setiap proses direpresentasikan sebagai direktori dengan nama sesuai **PID** (Process ID). Di dalamnya terdapat berbagai file yang berisi informasi seperti **command line**, **variabel lingkungan (environment variables)**, dan **file descriptor**.
+<br>
+
+![App Screenshot](Assets/no3.png)
+<br>
+<br>
+<br>
+
+### Strace and truss
+&nbsp;&nbsp; Strace (Linux) dan Truss (FreeBSD) adalah perintah untuk melacak **system call** dan **sinyal** yang digunakan oleh suatu proses. Tools ini berguna untuk **debugging** atau memahami apa yang sedang dilakukan oleh suatu program.
+
+Contoh penggunaan:  
+```bash
+strace -p 5810
+```
+Perintah di atas melacak proses dengan PID 5810 (program **top**). Output menunjukkan langkah-langkah program seperti:  
+1. Mengecek waktu saat ini (**gettimeofday**).  
+2. Membuka direktori **/proc**.  
+3. Membaca file **/proc/1/stat** untuk mendapatkan informasi tentang proses **init**.
+<br>
+<br>
+<br>
+
+### Runaway processes
+&nbsp;&nbsp; Runaway process adalah proses yang tidak merespons sistem dan menggunakan 100% CPU, sehingga membuat sistem berjalan sangat lambat. Proses ini dapat dihentikan menggunakan perintah **kill**. Jika proses tidak merespons sinyal **TERM**, bisa menggunakan sinyal **KILL** dengan perintah:  
+
+```bash
+kill -9 pid  
+```  
+atau  
+```bash
+kill -KILL pid  
+```  
+
+&nbsp;&nbsp; Untuk menyelidiki penyebab runaway process, bisa menggunakan **strace** atau **truss**. Jika proses menghasilkan output besar hingga memenuhi filesystem, cek penggunaan filesystem dengan perintah:  
+```bash
+df -h  
+```  
+&nbsp;&nbsp; Gunakan perintah **du** untuk menemukan file atau direktori terbesar, dan **lsof** untuk melihat file apa saja yang sedang dibuka oleh proses tersebut:  
+```bash
+lsof -p pid  
+```
+<br>
+<br>
+<br>
+
+### Periodic processes
+### cron: schedule command 
+&nbsp;&nbsp; Cron adalah layanan (daemon) di sistem operasi Linux yang digunakan untuk menjalankan perintah secara otomatis pada jadwal tertentu. Layanan ini aktif sejak sistem dinyalakan hingga dimatikan.  
+
+&nbsp;&nbsp; Cron membaca file konfigurasi bernama **crontab** (cron table) yang berisi daftar perintah dan waktu eksekusinya. Perintah akan dijalankan oleh shell (sh), sehingga hampir semua perintah yang bisa dilakukan secara manual di terminal dapat dijadwalkan dengan cron.  
+
+File crontab untuk setiap pengguna disimpan di:  
+- **/var/spool/cron** (Linux)  
+- **/var/cron/tabs** (FreeBSD)
+<br>
+
+### Format of crontab
+Crontab memiliki 5 kolom waktu dengan urutan:  
+`menit (0-59) | jam (0-23) | tanggal (1-31) | bulan (1-12) | hari (0-6)`  
+**Contoh:**
+- `30 2 * * *` → Menjalankan perintah setiap hari pukul 02:30  
+- `30 22 1 * *` → Menjalankan perintah setiap tanggal 1 pukul 22:30  
+- `*/30 * * * *` → Menjalankan perintah setiap 30 menit  
+
+**Manajemen Crontab**
+- `crontab -e` → Mengedit crontab  
+- `crontab -l` → Melihat crontab yang aktif  
+- `crontab -r` → Menghapus crontab  
+
+Crontab membantu otomatisasi tugas tanpa perlu intervensi manual.
+<br>
+<br>
+<br>
+
+### Systemd timer
+&nbsp;&nbsp; Systemd timer adalah file konfigurasi unit dengan ekstensi **.timer** yang berfungsi sebagai alternatif dari **cron jobs**. Timer ini lebih fleksibel dan lebih kuat dibandingkan cron jobs.
+
+&nbsp;&nbsp; Systemd timer bekerja dengan memicu unit layanan (**service unit**) pada waktu yang ditentukan. Timer ini bisa diaktifkan saat sistem booting atau berdasarkan event tertentu.
+
+Untuk mengelola systemd timer, digunakan perintah:
+
+```bash
+systemctl list-timers
+```
+Perintah tersebut menampilkan daftar timer yang aktif beserta jadwal eksekusinya.
+
+Contoh konfigurasi timer:
+
+```ini
+[Timer]
+OnCalendar=daily        # Menjadwalkan timer setiap hari
+AccuracySec=1h         # Toleransi keterlambatan maksimal 1 jam
+Persistent=true        # Timer tetap berjalan meskipun sistem restart
+```
+<br>
+<br>
+<br>
+
+### Common use for scheduled tasks
+**Penggunaan Umum untuk Tugas Terjadwal (Scheduled Tasks):**  
+
+1. **Mengirim Email Otomatis**  
+   Digunakan untuk mengirim laporan harian atau hasil eksekusi perintah secara otomatis menggunakan *cron* atau *systemd timers*.  
+
+2. **Membersihkan File Sistem**  
+   Menjalankan skrip untuk membersihkan direktori seperti *trash* setiap hari pada waktu tertentu, misalnya menghapus file lebih dari 30 hari.  
+
+3. **Rotasi Log File**  
+   Membagi log file menjadi beberapa bagian berdasarkan ukuran atau tanggal, menjaga beberapa versi lama tetap tersedia secara otomatis.  
+
+4. **Menjalankan Batch Jobs**  
+   Memproses data dalam jumlah besar seperti antrean pesan atau data ETL (Extract, Transform, Load) secara berkala.  
+
+5. **Backup dan Mirroring**  
+   Melakukan pencadangan otomatis atau menyalin direktori ke sistem lain secara berkala menggunakan *rsync*.
