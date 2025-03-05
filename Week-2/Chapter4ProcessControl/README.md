@@ -44,6 +44,7 @@ Informatika Dan Komputer<br>Program Studi Teknik Informatika<br>2024/2025</h3>
 - [Kesimpulan](#kesimpulan)
 <br>
 <br>
+
 ### Components of a Process
 &nbsp;&nbsp; Proses terdiri dari ruang alamat (address space) dan struktur data dalam kernel. Ruang alamat adalah sekumpulan halaman memori yang digunakan untuk menyimpan kode, data, dan stack proses. Halaman ini biasanya berukuran 4KiB atau 8KiB.
 
@@ -65,6 +66,7 @@ Informasi penting yang dicatat kernel tentang proses meliputi:
 <br>
 <br>
 <br>
+
 ### The PID: process ID number
 &nbsp;&nbsp; Setiap proses memiliki nomor unik yang disebut **PID (Process ID)**, yang diberikan oleh kernel saat proses dibuat. PID digunakan untuk mengidentifikasi proses dalam berbagai sistem seperti mengirim sinyal.  
 
@@ -72,16 +74,19 @@ Informasi penting yang dicatat kernel tentang proses meliputi:
 <br>
 <br>
 <br>
+
 ### The PPID: parent process ID number
 &nbsp;&nbsp; PPID (Parent Process ID) adalah nomor ID proses induk yang membuat proses tersebut. PPID digunakan untuk merujuk ke proses induk dalam berbagai panggilan sistem, seperti mengirim sinyal ke proses induk.
 <br>
 <br>
 <br>
+
 ### The UID and EUID: user ID and effective user ID
 &nbsp;&nbsp; **UID** (User ID) adalah ID pengguna yang memulai proses. **EUID** (Effective User ID) adalah ID pengguna yang digunakan proses untuk menentukan akses terhadap sumber daya seperti file, port jaringan, dan lainnya. EUID berperan dalam mengontrol izin akses pada sistem.
 <br>
 <br>
 <br>
+
 ### Lifecycle of a Process
 &nbsp;&nbsp; Dalam sistem operasi, proses baru dibuat dengan menggunakan sistem pemanggilan **fork**. **fork** membuat salinan proses induk yang hampir identik, tetapi memiliki **PID** (Process ID) yang berbeda dan informasi akuntansi sendiri. Pada Linux, pemanggilan ini secara internal menggunakan **clone**, yang mendukung fitur tambahan seperti thread, namun **fork** tetap dipertahankan untuk kompatibilitas lama.  
 
@@ -89,6 +94,7 @@ Informasi penting yang dicatat kernel tentang proses meliputi:
 <br>
 <br>
 <br>
+
 ### Signals
 &nbsp;&nbsp; Sinyal adalah cara untuk mengirim notifikasi ke suatu proses, digunakan untuk memberi tahu bahwa suatu peristiwa telah terjadi. Terdapat sekitar 30 jenis sinyal yang digunakan untuk berbagai tujuan, seperti:  
 
@@ -108,6 +114,7 @@ Informasi penting yang dicatat kernel tentang proses meliputi:
 <br>
 <br>
 <br>
+
 ### Kill: send signals
 &nbsp;&nbsp; Perintah **kill** digunakan untuk mengirim sinyal ke proses, biasanya untuk menghentikan proses. Secara default, **kill** mengirim sinyal **TERM** (terminate). Pengguna biasa hanya bisa menghentikan proses miliknya sendiri, sedangkan **root** bisa menghentikan proses apapun.
 
