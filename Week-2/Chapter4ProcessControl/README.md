@@ -43,7 +43,7 @@ Informatika Dan Komputer<br>Program Studi Teknik Informatika<br>2024/2025</h3>
 <br>
 <br>
 
-### Components of a Process
+## Components of a Process
 &nbsp;&nbsp; Proses terdiri dari ruang alamat (address space) dan struktur data dalam kernel. Ruang alamat adalah sekumpulan halaman memori yang digunakan untuk menyimpan kode, data, dan stack proses. Halaman ini biasanya berukuran 4KiB atau 8KiB.
 
 &nbsp;&nbsp; Kernel menggunakan struktur data untuk melacak status proses, prioritas, parameter penjadwalan, dan sumber daya yang digunakan seperti CPU, memori, file terbuka, dan port jaringan.
@@ -65,7 +65,7 @@ Informasi penting yang dicatat kernel tentang proses meliputi:
 <br>
 <br>
 
-### The PID: process ID number
+## The PID: process ID number
 &nbsp;&nbsp; Setiap proses memiliki nomor unik yang disebut **PID (Process ID)**, yang diberikan oleh kernel saat proses dibuat. PID digunakan untuk mengidentifikasi proses dalam berbagai sistem seperti mengirim sinyal.  
 
 &nbsp;&nbsp; Dengan konsep **namespace**, beberapa proses bisa memiliki PID yang sama dalam lingkungan terisolasi seperti **container**, yang memungkinkan menjalankan beberapa instance aplikasi secara terpisah pada satu sistem.
@@ -73,19 +73,19 @@ Informasi penting yang dicatat kernel tentang proses meliputi:
 <br>
 <br>
 
-### The PPID: parent process ID number
+## The PPID: parent process ID number
 &nbsp;&nbsp; PPID (Parent Process ID) adalah nomor ID proses induk yang membuat proses tersebut. PPID digunakan untuk merujuk ke proses induk dalam berbagai panggilan sistem, seperti mengirim sinyal ke proses induk.
 <br>
 <br>
 <br>
 
-### The UID and EUID: user ID and effective user ID
+## The UID and EUID: user ID and effective user ID
 &nbsp;&nbsp; **UID** (User ID) adalah ID pengguna yang memulai proses. **EUID** (Effective User ID) adalah ID pengguna yang digunakan proses untuk menentukan akses terhadap sumber daya seperti file, port jaringan, dan lainnya. EUID berperan dalam mengontrol izin akses pada sistem.
 <br>
 <br>
 <br>
 
-### Lifecycle of a Process
+## Lifecycle of a Process
 &nbsp;&nbsp; Dalam sistem operasi, proses baru dibuat dengan menggunakan sistem pemanggilan **fork**. **fork** membuat salinan proses induk yang hampir identik, tetapi memiliki **PID** (Process ID) yang berbeda dan informasi akuntansi sendiri. Pada Linux, pemanggilan ini secara internal menggunakan **clone**, yang mendukung fitur tambahan seperti thread, namun **fork** tetap dipertahankan untuk kompatibilitas lama.  
 
 &nbsp;&nbsp; Saat sistem menyala (booting), kernel secara otomatis membuat beberapa proses, termasuk **init** atau **systemd** yang memiliki nomor proses 1. Proses ini menjalankan skrip startup sistem. Semua proses lainnya adalah turunan dari proses ini, kecuali proses yang langsung dibuat oleh kernel.
@@ -93,7 +93,7 @@ Informasi penting yang dicatat kernel tentang proses meliputi:
 <br>
 <br>
 
-### Signals
+## Signals
 &nbsp;&nbsp; Sinyal adalah cara untuk mengirim notifikasi ke suatu proses, digunakan untuk memberi tahu bahwa suatu peristiwa telah terjadi. Terdapat sekitar 30 jenis sinyal yang digunakan untuk berbagai tujuan, seperti:  
 
 - Komunikasi antar proses.  
@@ -113,7 +113,7 @@ Informasi penting yang dicatat kernel tentang proses meliputi:
 <br>
 <br>
 
-### Kill: send signals
+## Kill: send signals
 &nbsp;&nbsp; Perintah **kill** digunakan untuk mengirim sinyal ke proses, biasanya untuk menghentikan proses. Secara default, **kill** mengirim sinyal **TERM** (terminate). Pengguna biasa hanya bisa menghentikan proses miliknya sendiri, sedangkan **root** bisa menghentikan proses apapun.
 
 **Sintaks:**
@@ -142,7 +142,7 @@ kill [-signal] pid
 <br>
 <br>
 
-### PS: Monitoring Processes
+## PS: Monitoring Processes
 &nbsp;&nbsp; Perintah **ps** digunakan oleh administrator sistem untuk memantau proses yang berjalan di sistem operasi. Perintah ini menampilkan informasi seperti PID (Process ID), UID (User ID), prioritas, terminal kontrol, penggunaan memori, waktu penggunaan CPU, dan status proses (berjalan, berhenti, tidur, dll).  
 
 Dengan menjalankan perintah **ps aux**, pengguna bisa melihat:  
@@ -184,7 +184,7 @@ PID (Process ID) dapat ditemukan dengan perintah:
 <br>
 <br>
 
-### Interactive monitoring with top
+## Interactive monitoring with top
 &nbsp;&nbsp; Perintah **top** menampilkan informasi sistem secara real-time, termasuk ringkasan sistem dan daftar proses yang sedang berjalan di Linux. Tampilan ini bisa dikonfigurasi sesuai kebutuhan pengguna dan disimpan untuk digunakan kembali. Secara default, pembaruan data terjadi setiap 1-2 detik.
 
 &nbsp;&nbsp; Selain itu, ada perintah **htop** yang memiliki fungsi serupa namun dengan antarmuka yang lebih interaktif. **htop** memungkinkan pengguna menggulir secara vertikal dan horizontal untuk melihat semua proses beserta perintah lengkapnya, serta menawarkan lebih banyak opsi operasi.
@@ -192,7 +192,7 @@ PID (Process ID) dapat ditemukan dengan perintah:
 <br>
 <br>
 
-### Nice and renice: changing process priority
+## Nice and renice: changing process priority
 Nice dan Renice digunakan untuk mengatur prioritas proses pada sistem operasi.  
 
 - **Nice** digunakan untuk memulai proses dengan tingkat prioritas tertentu. Nilai nice berkisar dari **-20 hingga +19** di Linux (semakin rendah nilainya, semakin tinggi prioritasnya).  
@@ -212,7 +212,7 @@ Secara default, nice value = **0**. Proses dengan prioritas tinggi mendapat wakt
 <br>
 <br>
 
-### The /proc filesystem
+## The /proc filesystem
 &nbsp;&nbsp; Direktori **/proc** pada Linux adalah *pseudo-filesystem* yang digunakan oleh kernel untuk menampilkan informasi tentang status sistem. Selain informasi proses, direktori ini juga berisi data statistik sistem.  
 
 &nbsp;&nbsp; Setiap proses direpresentasikan sebagai direktori dengan nama sesuai **PID** (Process ID). Di dalamnya terdapat berbagai file yang berisi informasi seperti **command line**, **variabel lingkungan (environment variables)**, dan **file descriptor**.
@@ -223,7 +223,7 @@ Secara default, nice value = **0**. Proses dengan prioritas tinggi mendapat wakt
 <br>
 <br>
 
-### Strace and truss
+## Strace and truss
 &nbsp;&nbsp; Strace (Linux) dan Truss (FreeBSD) adalah perintah untuk melacak **system call** dan **sinyal** yang digunakan oleh suatu proses. Tools ini berguna untuk **debugging** atau memahami apa yang sedang dilakukan oleh suatu program.
 
 Contoh penggunaan:  
@@ -238,7 +238,7 @@ Perintah di atas melacak proses dengan PID 5810 (program **top**). Output menunj
 <br>
 <br>
 
-### Runaway processes
+## Runaway processes
 &nbsp;&nbsp; Runaway process adalah proses yang tidak merespons sistem dan menggunakan 100% CPU, sehingga membuat sistem berjalan sangat lambat. Proses ini dapat dihentikan menggunakan perintah **kill**. Jika proses tidak merespons sinyal **TERM**, bisa menggunakan sinyal **KILL** dengan perintah:  
 
 ```bash
@@ -261,8 +261,8 @@ lsof -p pid
 <br>
 <br>
 
-### Periodic processes
-### cron: schedule command 
+# Periodic processes
+## cron: schedule command 
 &nbsp;&nbsp; Cron adalah layanan (daemon) di sistem operasi Linux yang digunakan untuk menjalankan perintah secara otomatis pada jadwal tertentu. Layanan ini aktif sejak sistem dinyalakan hingga dimatikan.  
 
 &nbsp;&nbsp; Cron membaca file konfigurasi bernama **crontab** (cron table) yang berisi daftar perintah dan waktu eksekusinya. Perintah akan dijalankan oleh shell (sh), sehingga hampir semua perintah yang bisa dilakukan secara manual di terminal dapat dijadwalkan dengan cron.  
@@ -272,7 +272,7 @@ File crontab untuk setiap pengguna disimpan di:
 - **/var/cron/tabs** (FreeBSD)
 <br>
 
-### Format of crontab
+## Format of crontab
 Crontab memiliki 5 kolom waktu dengan urutan:  
 `menit (0-59) | jam (0-23) | tanggal (1-31) | bulan (1-12) | hari (0-6)`  
 **Contoh:**
@@ -290,7 +290,7 @@ Crontab membantu otomatisasi tugas tanpa perlu intervensi manual.
 <br>
 <br>
 
-### Systemd timer
+## Systemd timer
 &nbsp;&nbsp; Systemd timer adalah file konfigurasi unit dengan ekstensi **.timer** yang berfungsi sebagai alternatif dari **cron jobs**. Timer ini lebih fleksibel dan lebih kuat dibandingkan cron jobs.
 
 &nbsp;&nbsp; Systemd timer bekerja dengan memicu unit layanan (**service unit**) pada waktu yang ditentukan. Timer ini bisa diaktifkan saat sistem booting atau berdasarkan event tertentu.
@@ -314,7 +314,7 @@ Persistent=true        # Timer tetap berjalan meskipun sistem restart
 <br>
 <br>
 
-### Common use for scheduled tasks
+## Common use for scheduled tasks
 **Penggunaan Umum untuk Tugas Terjadwal (Scheduled Tasks):**  
 
 1. **Mengirim Email Otomatis**  

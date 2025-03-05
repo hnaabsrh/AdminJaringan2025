@@ -62,7 +62,7 @@ Komponen utama sistem file terdiri dari:
 <br>
 <br>
 
-### Pathnames
+## Pathnames
 &nbsp;&nbsp; Kata *folder* berasal dari istilah di Windows dan macOS, tetapi dalam konteks teknis lebih tepat menggunakan istilah *directory*. 
 
 &nbsp;&nbsp; Urutan direktori yang menunjukkan lokasi file disebut *pathname*. Pathname bisa berupa:  
@@ -72,7 +72,7 @@ Komponen utama sistem file terdiri dari:
 <br>
 <br>
 
-### Filesystem Mounting and Unmounting
+## Filesystem Mounting and Unmounting
 &nbsp;&nbsp; Filesystem pada Linux terdiri dari potongan-potongan kecil yang disebut **filesystem**, di mana setiap filesystem memiliki satu direktori beserta subdirektori dan file di dalamnya. Tata letak keseluruhan filesystem disebut **file tree**, sedangkan filesystem yang terpasang dianggap sebagai cabang dari file tree.
 
 &nbsp;&nbsp; Filesystem dihubungkan ke file tree menggunakan perintah **mount** dengan direktori tertentu sebagai **mount point**. Contoh:  
@@ -100,7 +100,7 @@ ps up "1234 5678 91011"
 <br>
 <br>
 
-### Organization of the file tree
+## Organization of the file tree
 &nbsp;&nbsp; Struktur pohon file pada sistem UNIX kurang terorganisir dengan baik karena adanya konvensi penamaan yang tidak konsisten dan penyebaran file yang acak. 
 
 **Ringkasan:**
@@ -121,7 +121,7 @@ ps up "1234 5678 91011"
 <br>
 <br>
 
-### File types
+## File types
 Sebagian besar sistem file mendefinisikan **tujuh jenis file**, yaitu:  
 
 1. **Regular files** (file biasa)  
@@ -184,7 +184,7 @@ Flag **-d** digunakan untuk menampilkan informasi direktori, bukan isinya.
 <br>
 <br>
 
-### File attributes
+## File attributes
 &nbsp;&nbsp; Setiap file di sistem Unix dan Linux memiliki 9 bit izin yang menentukan siapa yang bisa membaca, menulis, dan mengeksekusi file. Ditambah 3 bit lainnya yang mempengaruhi cara kerja program yang dapat dieksekusi, sehingga total ada 12 bit mode. 
 
 &nbsp;&nbsp; Bit-bit ini disimpan bersama 4 bit tipe file yang ditetapkan saat file dibuat dan tidak bisa diubah. Namun, pemilik file dan superuser bisa mengubah 12 bit mode menggunakan perintah **chmod**.
@@ -195,7 +195,7 @@ Flag **-d** digunakan untuk menampilkan informasi direktori, bukan isinya.
 <br>
 <br>
 
-### Permission bits
+## Permission bits
 Permission bits dibagi menjadi tiga kelompok:  
 - **u (user/owner):** Hak akses pemilik file  
 - **g (group):** Hak akses grup file  
@@ -221,7 +221,7 @@ Pada direktori:
 <br>
 <br>
 
-### The setuid and setgid bits
+## The setuid and setgid bits
 &nbsp;&nbsp; Bit **setuid** (4000) membuat file yang dieksekusi berjalan dengan hak akses pemilik file, bukan pengguna yang menjalankannya.  
 Bit **setgid** (2000) membuat file berjalan dengan hak akses grup pemilik file.  
 
@@ -230,13 +230,13 @@ Bit **setgid** (2000) membuat file berjalan dengan hak akses grup pemilik file.
 <br>
 <br>
 
-### The sticky bit
+## The sticky bit
 &nbsp;&nbsp; **Sticky bit** (nilai oktal 1000) digunakan pada direktori untuk mencegah pengguna menghapus atau mengganti nama file yang bukan milik mereka. Fitur ini berguna pada direktori bersama seperti **/tmp** agar file hanya dapat dihapus oleh pemiliknya.
 <br>
 <br>
 <br>
 
-### ls: list and inspect files
+## ls: list and inspect files
 &nbsp;&nbsp; Perintah **ls** digunakan untuk menampilkan daftar file dan direktori, serta memeriksa atributnya.  
 
 &nbsp;&nbsp; Opsi **-l** digunakan untuk menampilkan format panjang yang mencakup:  
@@ -260,7 +260,7 @@ crw--w---- 1 root tty 4, 0 Mar  1  2020 /dev/tty0
 <br>
 <br>
 
-### chmod: change permissions
+## chmod: change permissions
 &nbsp;&nbsp; Perintah chmod mengubah mode suatu berkas. Anda dapat menggunakan notasi oktal atau notasi simbolik.
 <br>
 
@@ -279,7 +279,7 @@ crw--w---- 1 root tty 4, 0 Mar  1  2020 /dev/tty0
 <br>
 <br>
 
-### chown: change ownership
+## chown: change ownership
 &nbsp;&nbsp; Perintah **`chown`** digunakan untuk mengubah pemilik (owner) dan grup dari sebuah file atau direktori di Linux. 
 
 - Opsi **`-R`** digunakan untuk mengubah kepemilikan secara **rekursif**, termasuk semua file dan folder di dalamnya.
@@ -290,7 +290,7 @@ Artinya, semua file di dalam direktori **/home/abdou** akan diubah pemiliknya me
 <br>
 <br>
 
-### chgrp: change group
+## chgrp: change group
 &nbsp;&nbsp; Perintah **`chgrp`** digunakan untuk mengubah grup pemilik dari suatu file atau direktori.  
 Opsi **`-R`** digunakan agar perubahan grup dilakukan secara **rekursif**, termasuk semua file dan subdirektori di dalamnya.
 
@@ -303,7 +303,7 @@ chgrp -R users /home/abdou
 <br>
 <br>
 
-### umask: set default permissions
+## umask: set default permissions
 &nbsp;&nbsp; Perintah **umask** digunakan untuk mengatur izin default saat membuat file atau direktori baru. **Umask** adalah bit mask yang dikurangkan dari izin default untuk menentukan izin akhir yang diberikan.
 
 ```bash
@@ -322,7 +322,7 @@ $ umask 022
 <br>
 <br>
 
-### Access Control Lists
+## Access Control Lists
 &nbsp;&nbsp; Access Control Lists (ACLs) adalah cara untuk memperluas model izin tradisional Unix yang memiliki keterbatasan, seperti sulit memberikan file ke banyak pemilik atau memberikan izin berbeda ke beberapa pengguna pada file yang berbeda.
 
 **Komponen ACL:**
@@ -347,13 +347,13 @@ $ umask 022
 <br>
 <br>
 
-### Implementation of ACLs
+## Implementation of ACLs
 &nbsp;&nbsp; Implementasi ACL (Access Control Lists) dapat dilakukan oleh beberapa komponen dalam sistem. ACL bisa diterapkan oleh **kernel** untuk semua sistem file, oleh **sistem file individu**, atau oleh **perangkat lunak tingkat tinggi** seperti server **NFS** dan **SMB**.
 <br>
 <br>
 <br>
 
-### POSIX ACLs
+## POSIX ACLs
 &nbsp;&nbsp; ACL POSIX adalah ACL Unix tradisional. ACL ini didukung oleh sebagian besar sistem operasi mirip Unix, termasuk Linux, FreeBSD, dan Solaris.
 
 **Entri yang dapat muncul di ACL POSIX**
@@ -385,5 +385,5 @@ other::r--
 <br>
 <br>
 
-### NFSv4 ACLs
+## NFSv4 ACLs
 &nbsp;&nbsp; NFSv4 ACLs adalah jenis izin akses yang lebih canggih dibandingkan POSIX ACLs. Fitur ini didukung oleh beberapa sistem operasi berbasis Unix, seperti Linux dan FreeBSD. Keunggulannya adalah memiliki **default ACL** yang otomatis digunakan untuk mengatur izin pada file atau direktori baru.
