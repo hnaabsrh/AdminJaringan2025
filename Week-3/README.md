@@ -359,4 +359,5 @@ d. Output
 <br>
 <br>
 ## Referensi
-- [Package Manager]([file:///C:/Users/UsEr/Downloads/the_beginners_handbook-debian12-systenadmin.pdf](https://en-m-wikipedia-org.translate.goog/wiki/Package_manager?_x_tr_sl=en&_x_tr_tl=id&_x_tr_hl=id&_x_tr_pto=sge#:~:text=Harap%20bantu%20tingkatkan%20artikel%20ini,bersumber%20dapat%20digugat%20dan%20dihapus.&text=Manajer%20paket%20atau%20sistem%20manajemen,komputer%20untuk%20komputer%20secara%20konsisten.&text=Pengelola%20paket%20menangani%20paket%20%2C%20distribusi,paket%20perangkat%20lunak%20yang%20berbeda.))
+
+- [Package Manager](https://www.codepolitan.com/blog/mengenal-package-manager-dalam-pemrograman/)
