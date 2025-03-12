@@ -359,3 +359,4 @@ d. Output
 <br>
 <br>
 ## Referensi
+- [Debian 12 - Systemadmin](file:///C:/Users/UsEr/Downloads/the_beginners_handbook-debian12-systenadmin.pdf)
