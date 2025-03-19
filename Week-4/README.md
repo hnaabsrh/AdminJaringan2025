@@ -125,10 +125,6 @@ File `/usr/share/dns/root.hints` berisi daftar server root DNS yang digunakan ol
 
 ---
 
-Berikut adalah versi yang telah diperbarui dengan kata-kata berbeda namun tetap mempertahankan maknanya:  
-
----
-
 ## **Instalasi & Konfigurasi bind9**  
 
 ### **Pengaturan Jaringan Internal**  
