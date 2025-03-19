@@ -125,91 +125,96 @@ File `/usr/share/dns/root.hints` berisi daftar server root DNS yang digunakan ol
 
 ---
 
-## **Instalasi & Konfigurasi bind9**
+Berikut adalah versi yang telah diperbarui dengan kata-kata berbeda namun tetap mempertahankan maknanya:  
 
-### **Konfigurasi Jaringan Internal**
+---
 
-Install bind9
+## **Instalasi & Konfigurasi bind9**  
 
-Command untuk install bind9, sebelum itu masuk ke root
+### **Pengaturan Jaringan Internal**  
+
+Menginstal bind9  
+
+Jalankan perintah berikut untuk memasang bind9 setelah masuk sebagai root:  
 
 ```bash
 root@dlp:~# apt -y install bind9 bind9utils
-```
+```  
 
-![App Screenshot](Assets/1.jpg)<br>
+![App Screenshot](Assets/1.jpg)<br>  
 
-### **Konfigurasi dan Penyesuaian BIND**
+### **Menyesuaikan dan Mengonfigurasi BIND**  
 
-Menambahkan `named.conf.internal-zones`, file konfigurasi baru, ke file utama konfigurasi BIND `/etc/bind/named.conf.`
+Tambahkan file konfigurasi baru `named.conf.internal-zones` ke dalam file utama BIND yang terletak di `/etc/bind/named.conf`.  
 
-![App Screenshot](Assets/3.jpg)<br>
+![App Screenshot](Assets/3.jpg)<br>  
 
-### Konfigurasi pada `/etc/bind/named.conf.options`
+### **Pengaturan dalam `/etc/bind/named.conf.options`**  
 
-![App Screenshot](Assets/5.jpg)<br>
+![App Screenshot](Assets/5.jpg)<br>  
 
-Konfigurasi ACL **internal-network** untuk jaringan `192.168.80.0/24` menentukan siapa yang dapat mengakses layanan DNS, di mana hanya **localhost** dan jaringan internal yang diizinkan melakukan query (`allow-query`), sementara transfer zona hanya diperbolehkan untuk **localhost** (`allow-transfer`). Pencarian rekursif diaktifkan (`recursion yes`) untuk resolusi domain eksternal, validasi DNSSEC diatur otomatis (`dnssec-validation auto`), dan BIND dikonfigurasi agar menerima koneksi IPv6 (`listen-on-v6 { any; }`).
+Konfigurasi **ACL internal-network** pada jaringan `192.168.80.0/24` menentukan klien mana yang diperbolehkan mengakses layanan DNS. Hanya **localhost** dan jaringan internal yang diberikan izin untuk melakukan query (`allow-query`), sementara transfer zona hanya diizinkan untuk **localhost** (`allow-transfer`). Resolusi rekursif diaktifkan (`recursion yes`) agar bisa mengakses domain eksternal. Selain itu, validasi DNSSEC diatur otomatis (`dnssec-validation auto`), dan BIND dikonfigurasi agar menerima koneksi dari IPv6 (`listen-on-v6 { any; }`).  
 
-### **Konfigurasi Zona DNS di BIND**
+### **Menambahkan Zona DNS pada BIND**  
 
-![App Screenshot](Assets/7.jpg)<br>
+![App Screenshot](Assets/7.jpg)<br>  
 
-**1. Zona Forward (kelompok4.home)**
+**1. Zona Forward (kelompok4.home)**  
 
-Zona ini digunakan untuk menerjemahkan nama domain ke alamat IP dan disimpan dalam file `/etc/bind/kelompok4.home.lan`. Bertindak sebagai **master (utama)**, sehingga server ini menjadi sumber resmi data DNS untuk domain tersebut. Selain itu, update dinamis tidak diizinkan dengan konfigurasi `allow-update { none; };`.
+Zona ini berfungsi untuk menerjemahkan nama domain menjadi alamat IP dan tersimpan dalam file `/etc/bind/kelompok4.home.lan`. Server ini bertindak sebagai **master (utama)** sehingga menjadi referensi utama untuk data DNS pada domain tersebut. Selain itu, fitur update dinamis tidak diaktifkan dengan konfigurasi `allow-update { none; };`.  
 
-**2. Zona Reverse (80.168.192.in-addr.arpa)**
+**2. Zona Reverse (80.168.192.in-addr.arpa)**  
 
-Zona ini berfungsi untuk menerjemahkan alamat IP ke nama domain (**reverse lookup**) dan disimpan dalam file `/etc/bind/80.168.192.db`. Seperti zona forward, zona ini juga bertindak sebagai **master**, dengan update dinamis yang dinonaktifkan.
+Zona ini memiliki fungsi kebalikan dari zona forward, yaitu menerjemahkan alamat IP menjadi nama domain (**reverse lookup**), dan tersimpan dalam file `/etc/bind/80.168.192.db`. Sama seperti zona forward, zona ini juga bertindak sebagai **master**, dengan update dinamis yang tidak diaktifkan.  
 
-### **Konfigurasi opsi BIND untuk menggunakan hanya IPv4 dan menonaktifkan IPv6.**
+### **Mengatur BIND agar Menggunakan Hanya IPv4 dan Menonaktifkan IPv6**  
 
-![App Screenshot](Assets/9.jpg)<br>
+![App Screenshot](Assets/9.jpg)<br>  
 
-Untuk mengonfigurasi BIND agar hanya menggunakan IPv4, edit file `/etc/default/named` dan tambahkan opsi `OPTIONS="-u bind -4"`. Opsi ini memastikan BIND berjalan sebagai pengguna `bind` dan hanya menggunakan IPv4, mengabaikan IPv6 untuk menghindari kemungkinan error pada jaringan yang tidak mendukung IPv6.
+Untuk memastikan BIND hanya bekerja dengan IPv4, buka file `/etc/default/named` dan tambahkan opsi `OPTIONS="-u bind -4"`. Opsi ini memastikan BIND berjalan dengan pengguna `bind` serta hanya menggunakan IPv4, sehingga IPv6 tidak digunakan untuk mencegah potensi kendala jaringan.  
 
-### **Konfigurasi Zone Files**
+### **Pengaturan File Zona**  
 
-Konfigurasi **forward lookup** pada BIND DNS Server untuk jaringan **192.168.80.0/24** dengan domain **kelompok4.home** memungkinkan server menerjemahkan nama domain ke alamat IP dengan menetapkan file zona sebagai **master** dan mendefinisikan pemetaan nama host.
+Pengaturan **forward lookup** pada DNS Server BIND untuk jaringan **192.168.80.0/24** dengan domain **kelompok4.home** bertujuan agar server dapat menerjemahkan domain ke IP. File zona dikonfigurasi sebagai **master**, dengan pemetaan nama host yang telah ditentukan.  
 
-![App Screenshot](Assets/11.jpg)<br>
+![App Screenshot](Assets/11.jpg)<br>  
 
-Konfigurasi **reverse lookup** pada BIND DNS Server untuk jaringan **192.168.80.0/24** dengan domain **kelompok4.home** dilakukan dengan membuat file zona `/etc/bind/80.168.192.db`, mendaftarkannya sebagai **master** di `/etc/bind/named.conf.local`, lalu memverifikasi dan merestart BIND agar perubahan diterapkan.
+Pengaturan **reverse lookup** untuk jaringan **192.168.80.0/24** dilakukan dengan membuat file zona `/etc/bind/80.168.192.db`. File ini kemudian didaftarkan sebagai **master** di `/etc/bind/named.conf.local`. Setelah itu, lakukan verifikasi dan restart BIND agar perubahan dapat diterapkan.  
 
-![App Screenshot](Assets/13.jpg)<br>
+![App Screenshot](Assets/13.jpg)<br>  
 
-### **BIND: Verify Resolution**
+### **Memeriksa Resolusi DNS pada BIND**  
 
-Restart BIND untuk menerapkan perubahan dengan command 
+Untuk menerapkan perubahan, jalankan perintah berikut guna merestart layanan BIND:  
 
 ```bash
 root@dlp:~# systemctl restart named
-```
+```  
 
-### **Konfigurasi DNS Client untuk menggunakan DNS Server sendiri**
+### **Konfigurasi DNS Client agar Menggunakan Server DNS Sendiri**  
 
-![App Screenshot](Assets/16.jpg)<br>
+![App Screenshot](Assets/16.jpg)<br>  
 
-Sistem Linux menggunakan file /etc/resolv.conf untuk memilih DNS server mana yang akan digunakan untuk melakukan query DNS, misalnya menyelesaikan domain ke IP atau sebaliknya.
+Sistem Linux menentukan server DNS yang digunakan melalui file `/etc/resolv.conf`. File ini dapat diubah untuk menetapkan DNS server yang dipakai dalam query DNS, seperti menerjemahkan nama domain menjadi IP atau sebaliknya.  
 
-Dengan mengedit **`/etc/resolv.conf`** dan mengubah **nameserver** menjadi **192.168.80.193**, berarti:
+Dengan mengedit **`/etc/resolv.conf`** dan mengatur **nameserver** ke **192.168.80.193**, hal ini berarti:  
 
-- Mengatur sistem supaya pakai **DNS Server sendiri** (BIND di **192.168.80.193**)
-- Prioritaskan pencarian DNS ke **server lokal dulu**, sebelum ke DNS eksternal
-- Bikin sistem bisa resolve **domain lokal** yang cuma dikenali oleh DNS internal
+- Sistem akan mengutamakan penggunaan **DNS Server internal** (**BIND di 192.168.80.193**).  
+- Pencarian DNS akan dilakukan terlebih dahulu di **server lokal** sebelum ke server eksternal.  
+- Sistem dapat menyelesaikan **domain internal** yang hanya dikenali oleh DNS lokal.  
 
-### **DNS Query menggunakan DiG (Domain Information Groper) untuk Forward Lookup**
+### **Melakukan Query DNS Menggunakan DiG untuk Forward Lookup**  
 
-![App Screenshot](Assets/17.jpg)<br>
+![App Screenshot](Assets/17.jpg)<br>  
 
-Perintah di atas digunakan untuk menggunakan DNS Server yang telah dikonfigurasi untuk melihat resolusi nama domain ke alamat IP.
+Perintah ini digunakan untuk menguji apakah DNS server yang telah dikonfigurasi dapat menyelesaikan nama domain ke alamat IP dengan benar.  
 
-### **Reverse DNS Lookup**
+### **Melakukan Reverse DNS Lookup**  
 
-![App Screenshot](Assets/18.jpg)<br>
+![App Screenshot](Assets/18.jpg)<br>  
 
-Nama domain yang terkait dengan alamat IP tertentu dapat ditemukan dengan menggunakan perintah di atas untuk melakukan pencarian balik.
+Untuk menemukan nama domain yang terhubung dengan suatu alamat IP, gunakan perintah di atas guna melakukan pencarian balik (reverse lookup).
+
 
 ### Referensi
 [DNS Concept](https://www.biznetgio.com/news/apa-itu-dns-pengertian-fungsi-cara-kerja-dan-teknologi-anycast-dns)
