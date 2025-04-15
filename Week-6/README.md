@@ -25,8 +25,7 @@ Informatika Dan Komputer<br>Program Studi Teknik Informatika<br>2025/2026</h3>
 - [Konfigurasi NTPSec](#konfigurasi-ntpsec-vm-1)  
 - [Konfigurasi File Samba](#konfigurasi-samba-vm-1)  
 - [Konfigurasi DNS Server](#konfigurasi-dns-server-vm-1)  
-- [Konfigurasi pada VM 2 (Client)](#konfigurasi-vm-2)  
-- [Kesimpulan](#kesimpulan)  
+- [Konfigurasi pada VM 2 (Client)](#konfigurasi-vm-2)   
 
 Dalam praktikum ini, digunakan dua buah Virtual Machine (VM) yang masing-masing berperan sebagai **Client** dan **Server**.
 
@@ -176,16 +175,6 @@ Hasil dari perintah `dig` menunjukkan bahwa domain `ns.kelompok5.home` berhasil 
 ![App Screenshot](Assets/no31.jpg)<br>
 
 Perintah `dig -x 192.168.3.1` menunjukkan hasil yang sesuai dengan domain `ns.kelompok5.home`, yang berarti PTR record sudah dikonfigurasi dengan benar.
-
----
-
-## Kesimpulan
-
-Melalui praktikum ini, saya telah berhasil melakukan serangkaian konfigurasi layanan pada VM1 yang berperan sebagai server serta VM2 sebagai client. Pada **VM1**, konfigurasi jaringan dilakukan dengan dua adapter untuk memastikan konektivitas ke internet dan jaringan internal. Server diatur agar dapat menjadi gateway bagi client melalui pengaktifan IP forwarding dan pengaturan iptables.
-
-Pemasangan dan pengaturan **NTPSec** memungkinkan sinkronisasi waktu agar semua sistem dalam jaringan memiliki waktu yang konsisten dan akurat, yang penting untuk keamanan serta manajemen sistem. **Layanan Samba** berhasil disiapkan untuk memfasilitasi berbagi file antara server dan client secara mudah melalui jaringan lokal. Hal ini dibuktikan dengan client yang dapat mengakses folder shared dari file manager-nya.
-
-Selanjutnya, konfigurasi **DNS Server menggunakan Bind9** juga sukses dilakukan. Server mampu menerjemahkan domain lokal menjadi alamat IP dan sebaliknya, yang ditunjukkan dari hasil tes DNS forward dan reverse lookup tanpa error. Pada sisi **VM2 sebagai client**, koneksi ke server berjalan lancar berkat pengaturan IP statis yang sesuai jaringan, serta berhasil mengakses layanan-layanan yang telah disediakan oleh server.
 
 ---
 
