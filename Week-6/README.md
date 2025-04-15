@@ -21,11 +21,11 @@ Informatika Dan Komputer<br>Program Studi Teknik Informatika<br>2025/2026</h3>
 
 ## Daftar Isi
 
-- [Konfigurasi pada VM 1 (Server)](#konfigurasi-vm-1)  
-- [Konfigurasi NTPSec](#konfigurasi-ntpsec-vm-1)  
-- [Konfigurasi File Samba](#konfigurasi-samba-vm-1)  
-- [Konfigurasi DNS Server](#konfigurasi-dns-server-vm-1)  
-- [Konfigurasi pada VM 2 (Client)](#konfigurasi-vm-2)   
+- [Konfigurasi pada VM 1 (Server)](#konfigurasi-vm-1-server)  
+- [Konfigurasi NTPSec](#konfigurasi-ntp-ntpsec-pada-vm-1)  
+- [Konfigurasi File Samba](#konfigurasi-file-samba-pada-vm-1)  
+- [Konfigurasi DNS Server](#konfigurasi-dns-server-pada-vm-1)  
+- [Konfigurasi pada VM 2 (Client)](#konfigurasi-pada-vm-2)   
 
 Dalam praktikum ini, digunakan dua buah Virtual Machine (VM) yang masing-masing berperan sebagai **Client** dan **Server**.
 
