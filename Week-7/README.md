@@ -67,7 +67,7 @@ Informatika Dan Komputer<br>Program Studi Teknik Informatika<br>2025/2026</h3>
 
 <br>
 
-9. Mencoba ping ke kelompok lain <br>
+9. Mencoba ping ke kelompok lain <hhbr>
     ![App Screenshot](Assets/pingkellain.jpg)<br>
     ![App Screenshot](Assets/pingkellain2.jpg)<br>
     ![App Screenshot](Assets/pingkellain3.jpg)<br>
