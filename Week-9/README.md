@@ -51,33 +51,40 @@ Setelah itu lakukan update
 
 ### Konfigurasi DNS Server (Bind9) Pada Server
 1. Instalasi paket dengan menjalankan perintah `apt -y install bind9 bind9utils`
+<br>
+<br>
 
 2. Edit dan modifikasi file `/etc/bind/named.conf`
 
     ![App Screenshot](Assets/namedconf.jpg)
 <br>
+<br>
 
 3. Modifikasi file `/etc/bind/named.conf.options`
 
-    ![App Screenshot](Assets/confoptions.jpg)
+![App Screenshot](Assets/confoptions.jpg)
 <br>
 
-   ![App Screenshot](Assets/confoptions2.jpg)
+![App Screenshot](Assets/confoptions2.jpg)
+<br>
 <br>
 
 4. Konfigurasi internal zone pada file `/etc/bind/named.conf.internal-zones`
 
     ![App Screenshot](Assets/intzones.jpg)
 <br>
+<br>
 
 5. Konfigurasi file `/etc/default/named`
 
     ![App Screenshot](Assets/defaultnamed.jpg)
 <br>
+<br>
 
 6. Buat file sesuai dengan domain lokal
 
     ![App Screenshot](Assets/domainlokal.jpg)
+<br>
 <br>
 
 7. Buat file sesuai dengan IP Address
@@ -89,10 +96,10 @@ Setelah itu lakukan update
 ### Tes DNS Server 1
 1. Tes DNS Server dari jaringan dalam kelompok
 
-    ![App Screenshot](Assets/tesdns.jpg)
+![App Screenshot](Assets/tesdns.jpg)
 <br>
 
-   ![App Screenshot](Assets/tesdns2.jpg)
+![App Screenshot](Assets/tesdnskedua.jpg)
 <br>
 <br>
 
@@ -101,6 +108,7 @@ Setelah itu lakukan update
 
     ![App Screenshot](Assets/installapache2.jpg)
 <br>
+<br>
 
 2. Pengaturan Dasar Apache2
     - ServerTokens: Edit dan ubah /etc/apache2/conf-enabled/security.conf
@@ -108,10 +116,12 @@ Setelah itu lakukan update
         ![App Screenshot](Assets/confenable.jpg)
         Ini digunakan menyembunyikan informasi detail versi Apache pada header HTTP, meningkatkan keamanan.
     <br>
+    <br>
 
     - DirectoryIndex: Edit /etc/apache2/mods-enabled/dir.conf dan atur urutan file index yang dicari ketika direktori diakses:
 
         ![App Screenshot](Assets/modsenable.jpg)
+    <br>
     <br>
 
     - ServerName: Edit /etc/apache2/apache2.conf dan tambahkan baris berikut untuk mendefinisikan nama server:
@@ -119,20 +129,24 @@ Setelah itu lakukan update
         ![App Screenshot](Assets/apache2conf.jpg)
         Ini mencegah munculnya peringatan “Could not reliably determine the server's fully qualified domain name”.
     <br>
+    <br>
 
     - ServerAdmin: Edit /etc/apache2/sites-enabled/000-default.conf dan ubah baris email admin:
 
         ![App Screenshot](Assets/sitesenable.jpg)
+    <br>
     <br>
 
     - Pengujian dapat dilakukan dengan mengakses domain melalui browser.
 
         ![App Screenshot](Assets/pengujian.jpg)
     <br>
+    <br>
 
 3. Custom tampilan halaman
 
     ![App Screenshot](Assets/custom.jpg)
+<br>
 <br>
 
 4. Percobaan Akses
