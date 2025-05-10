@@ -55,6 +55,7 @@ Setelah itu lakukan update
 3. Modifikasi file `/etc/bind/named.conf.options`
 ![App Screenshot](Assets/confoptions.jpg)
 <br>
+
 ![App Screenshot](Assets/confoptions2.jpg)
 <br>
 
@@ -79,6 +80,7 @@ Setelah itu lakukan update
 1. Tes DNS Server dari jaringan dalam kelompok
 ![App Screenshot](Assets/tesdns.jpg)
 <br>
+
 ![App Screenshot](Assets/tesdns2.jpg)
 <br>
 <br>
