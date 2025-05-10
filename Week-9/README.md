@@ -54,90 +54,90 @@ Setelah itu lakukan update
 
 2. Edit dan modifikasi file `/etc/bind/named.conf`
 
-![App Screenshot](Assets/namedconf.jpg)
+    ![App Screenshot](Assets/namedconf.jpg)
 <br>
 
 3. Modifikasi file `/etc/bind/named.conf.options`
 
-![App Screenshot](Assets/confoptions.jpg)
+    ![App Screenshot](Assets/confoptions.jpg)
 <br>
 
-![App Screenshot](Assets/confoptions2.jpg)
+   ![App Screenshot](Assets/confoptions2.jpg)
 <br>
 
 4. Konfigurasi internal zone pada file `/etc/bind/named.conf.internal-zones`
 
-![App Screenshot](Assets/intzones.jpg)
+    ![App Screenshot](Assets/intzones.jpg)
 <br>
 
 5. Konfigurasi file `/etc/default/named`
 
-![App Screenshot](Assets/defaultnamed.jpg)
+    ![App Screenshot](Assets/defaultnamed.jpg)
 <br>
 
 6. Buat file sesuai dengan domain lokal
 
-![App Screenshot](Assets/domainlokal.jpg)
+    ![App Screenshot](Assets/domainlokal.jpg)
 <br>
 
 7. Buat file sesuai dengan IP Address
 
-![App Screenshot](Assets/ipaddr.jpg)
+    ![App Screenshot](Assets/ipaddr.jpg)
 <br>
 <br>
 
 ### Tes DNS Server 1
 1. Tes DNS Server dari jaringan dalam kelompok
 
-![App Screenshot](Assets/tesdns.jpg)
+    ![App Screenshot](Assets/tesdns.jpg)
 <br>
 
-![App Screenshot](Assets/tesdns2.jpg)
+   ![App Screenshot](Assets/tesdns2.jpg)
 <br>
 <br>
 
 ## Konfigurasi Web Server (Apache2)
 1. Instalasi paket apache2 Jalankan perintah berikut untuk menginstal Apache2
 
-![App Screenshot](Assets/installapache2.jpg)
+    ![App Screenshot](Assets/installapache2.jpg)
 <br>
 
 2. Pengaturan Dasar Apache2
     - ServerTokens: Edit dan ubah /etc/apache2/conf-enabled/security.conf
 
-    ![App Screenshot](Assets/confenable.jpg)
-    Ini digunakan menyembunyikan informasi detail versi Apache pada header HTTP, meningkatkan keamanan.
+        ![App Screenshot](Assets/confenable.jpg)
+        Ini digunakan menyembunyikan informasi detail versi Apache pada header HTTP, meningkatkan keamanan.
     <br>
 
     - DirectoryIndex: Edit /etc/apache2/mods-enabled/dir.conf dan atur urutan file index yang dicari ketika direktori diakses:
 
-    ![App Screenshot](Assets/modsenable.jpg)
+        ![App Screenshot](Assets/modsenable.jpg)
     <br>
 
     - ServerName: Edit /etc/apache2/apache2.conf dan tambahkan baris berikut untuk mendefinisikan nama server:
 
-    ![App Screenshot](Assets/apache2conf.jpg)
-    Ini mencegah munculnya peringatan “Could not reliably determine the server's fully qualified domain name”.
+        ![App Screenshot](Assets/apache2conf.jpg)
+        Ini mencegah munculnya peringatan “Could not reliably determine the server's fully qualified domain name”.
     <br>
 
     - ServerAdmin: Edit /etc/apache2/sites-enabled/000-default.conf dan ubah baris email admin:
 
-    ![App Screenshot](Assets/sitesenable.jpg)
+        ![App Screenshot](Assets/sitesenable.jpg)
     <br>
 
     - Pengujian dapat dilakukan dengan mengakses domain melalui browser.
 
-    ![App Screenshot](Assets/pengujian.jpg)
+        ![App Screenshot](Assets/pengujian.jpg)
     <br>
 
 3. Custom tampilan halaman
 
-![App Screenshot](Assets/custom.jpg)
+    ![App Screenshot](Assets/custom.jpg)
 <br>
 
 4. Percobaan Akses
 
-![App Screenshot](Assets/successdone.jpg)
+    ![App Screenshot](Assets/successdone.jpg)
 <br>
-Dari hasil diatas, berarti konfigurasiu web server sudah berhasil.
+    Dari hasil diatas, berarti konfigurasiu web server sudah berhasil.
 
