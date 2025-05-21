@@ -95,7 +95,7 @@ systemctl restart postfix
 
 ---
 
-## 2) Konfigurasi Dovecot (IMAP, POP3, dan SMTP Auth)
+## 2. Konfigurasi Dovecot (IMAP, POP3, dan SMTP Auth)
 
 ### a) Instalasi Dovecot
 
@@ -187,7 +187,7 @@ Setelah seluruh konfigurasi selesai, layanan Dovecot perlu dimuat ulang agar per
 
 ---
 
-## 3) Uji Coba Menggunakan Mailutils
+## 3. Uji Coba Menggunakan Mailutils
 
 Setelah konfigurasi Postfix dan Dovecot selesai, langkah selanjutnya adalah menguji sistem pengiriman dan penerimaan email menggunakan tool **Mailutils** sebagai klien email berbasis terminal.
 
